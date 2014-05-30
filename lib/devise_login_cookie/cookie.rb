@@ -72,7 +72,7 @@ module DeviseLoginCookie
 
     def signer
       require 'signed_json'
-      secret = secret_token || Rails.configuration.secret_token
+      secret = secret_token || Rails.application.secrets.secret_key_base
       @signer ||= SignedJson::Signer.new(secret)
     end
 
